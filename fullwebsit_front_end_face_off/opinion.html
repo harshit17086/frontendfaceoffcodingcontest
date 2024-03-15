@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Opinion Page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url(photo.jpg); /* Replace with your desired background image */
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #opinion-form {
+        margin-bottom: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        resize: none; /* Prevent resizing */
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    #like-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #like-button:hover {
+        background-color: #218838;
+    }
+
+    #like-count {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .social-media-links {
+        text-align: center;
+    }
+
+    .social-media-links a {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 50%; /* Round buttons */
+        transition: transform 0.3s;
+    }
+
+    .social-media-links a:hover {
+        transform: scale(1.2); /* Scale up on hover */
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Opinion Page</h1>
+
+        <!-- Opinion Form -->
+        <form id="opinion-form">
+            <textarea id="opinion" name="opinion" rows="4" placeholder="Share your opinion..." required></textarea><br>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        <!-- Like Button -->
+        <button id="like-button"><i class="fas fa-thumbs-up"></i> Like</button>
+        <span id="like-count">0</span>
+
+        <!-- Social Media Links -->
+        <div class="social-media-links">
+            <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/yourpage" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script>
+        let likeCount = 0;
+
+        document.getElementById("opinion-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            var opinionText = document.getElementById("opinion").value;
+            if (opinionText.trim() !== "") {
+                var opinionElement = document.createElement("div");
+                opinionElement.classList.add("opinion");
+                opinionElement.textContent = opinionText;
+                document.getElementById("opinions").appendChild(opinionElement);
+                document.getElementById("opinion").value = ""; // Clear input field after submission
+            }
+        });
+
+        document.getElementById("like-button").addEventListener("click", function() {
+            likeCount++;
+            document.getElementById("like-count").textContent = likeCount;
+        });
+    </script>
+</body>
+</html>
